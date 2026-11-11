@@ -229,8 +229,13 @@ if (contactForm && formStatus && submitBtn) {
       }
 
       // Display success notification
-      formStatus.textContent =
-        result.message || "Your message has been saved successfully.";
+      if (result.notification_sent) {
+        formStatus.textContent =
+          "Message sent successfully! I'll get back to you soon.";
+      } else {
+        formStatus.textContent =
+          "Message saved successfully, but email notification could not be sent.";
+      }
       formStatus.className = "form-status success";
 
       // Clear form after successful submission
