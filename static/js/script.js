@@ -174,3 +174,76 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSkills();
   console.log("Portfolio frontend initialized.");
 });
+
+
+// =====================================
+// 7. CONTACT FORM INTEGRATION
+// =====================================
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+const submitBtn = document.getElementById("submitBtn");
+
+if (contactForm && formStatus && submitBtn) {
+  contactForm.addEventListener("submit", async (event) => {
+    // Prevent normal page reload
+    event.preventDefault();
+
+    // Get values from form
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Frontend validation
+    if (!name || !email || !message) {
+      formStatus.textContent = "Please fill in all fields.";
+      formStatus.className = "form-status error";
+      return;
+    }
+
+    // Disable button while sending
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+    formStatus.textContent = "";
+    formStatus.className = "form-status";
+
+    try {
+      // Send data to Flask backend
+      const response = await fetch("/api/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || result.error || "Unable to send message."
+        );
+      }
+
+      // Display success notification
+      formStatus.textContent =
+        result.message || "Your message has been saved successfully.";
+      formStatus.className = "form-status success";
+
+      // Clear form after successful submission
+      contactForm.reset();
+    } catch (error) {
+      console.error("Contact form error:", error);
+      formStatus.textContent =
+        error.message || "Something went wrong. Please try again.";
+      formStatus.className = "form-status error";
+    } finally {
+      // Enable button again
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Message ↗";
+    }
+  });
+}

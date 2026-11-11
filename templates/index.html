@@ -202,24 +202,73 @@
                     Have an opportunity, idea, or project in mind? I'd love to hear from you.
                 </p>
             </div>
-            <div class="contact-card">
-                <div>
-                    <p class="small-label">EMAIL ME</p>
-                    <a href="mailto:nabajyotideb2017@gmail.com">
-                        nabajyotideb2017@gmail.com
-                    </a>
-                </div>
-                <div>
-                    <p class="small-label">FIND ME ONLINE</p>
-                    <div class="contact-socials">
-                        <a href="https://github.com/Nabajyotideb" target="_blank" rel="noopener noreferrer">
-                            GitHub ↗
+            <div class="contact-layout">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Let's connect.</h3>
+                    <p>
+                        Feel free to reach out for internship opportunities, collaborations, or just to discuss technology.
+                    </p>
+                    <div class="contact-detail">
+                        <span>EMAIL</span>
+                        <a href="mailto:nabajyotideb2017@gmail.com">
+                            nabajyotideb2017@gmail.com
                         </a>
+                    </div>
+                    <div class="contact-detail">
+                        <span>GITHUB</span>
+                        <a href="https://github.com/Nabajyotideb" target="_blank" rel="noopener noreferrer">
+                            github.com/Nabajyotideb ↗
+                        </a>
+                    </div>
+                    <div class="contact-detail">
+                        <span>LINKEDIN</span>
                         <a href="https://www.linkedin.com/in/nabajyoti-deb/" target="_blank" rel="noopener noreferrer">
-                            LinkedIn ↗
+                            LinkedIn Profile ↗
                         </a>
                     </div>
                 </div>
+
+                <!-- Contact Form -->
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            maxlength="150"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            maxlength="5000"
+                            placeholder="Write your message here..."
+                            required
+                        ></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="btn btn-primary">
+                        Send Message ↗
+                    </button>
+                    <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+                </form>
             </div>
         </section>
     </main>
