@@ -731,3 +731,21 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Dynamic content styles */
+.loading-text {
+  color: var(--muted);
+  padding: 20px;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 15px;
+}
+
+.project-actions .project-link {
+  margin-top: 5px;
+}
